@@ -2,12 +2,8 @@ package com.example.senddatabetweenfragmentusingrxjava
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
-import com.example.senddatabetweenfragmentusingrxjava.databinding.FragmentReceiveBinding
 import com.example.senddatabetweenfragmentusingrxjava.databinding.FragmentSendBinding
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
@@ -16,7 +12,8 @@ import java.util.concurrent.TimeUnit
 
 
 class SendFragment : BaseFragment<FragmentSendBinding>() {
-    override val LOG_TAG: String="SEND"
+    override val LOG_TAG: String = "SEND"
+    lateinit var connection: Connection
     override val bindingInflater: (LayoutInflater) -> FragmentSendBinding =
         FragmentSendBinding::inflate
 
@@ -26,31 +23,28 @@ class SendFragment : BaseFragment<FragmentSendBinding>() {
     }
 
 
-     private  fun setData() {
-        val x= Observable.create<String> {
-             binding?.send?.doOnTextChanged { text, _, _, _ ->
-                 it.onNext(text.toString())
-             }
-         }.debounce(1, TimeUnit.SECONDS).publish()
+    private fun setData() {
+        val hotObservable = PublishSubject.create<String> {
+            binding?.send?.doOnTextChanged { text, _, _, _ ->
+                it.onNext(text.toString())
+            }
+        }.debounce(1500, TimeUnit.MILLISECONDS)
+            .observeOn(AndroidSchedulers.mainThread()).publish()
 
-         x.connect()
-         x.subscribeOn(AndroidSchedulers.mainThread())
-             .subscribe(::onNext, ::onError)
-     }
+        hotObservable.connect()
+        hotObservable.subscribe(
+            {onNext->
+                connection.passData(onNext)
+            },
+            {onError->
 
-    private fun onNext(value: String)
-      =ReceiveFragment().apply {
-            arguments=Bundle().apply {
-                putString(Constant.KEY,value)
+                Log.i(LOG_TAG,onError.toString())
 
             }
-        Log.i(LOG_TAG,value)
-            binding?.receive?.text=value
-        }
-
-    private fun onError(e:Throwable){
-      Log.i(LOG_TAG,e.message.toString())
+        )
     }
+
+
 
 
 }

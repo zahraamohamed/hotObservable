@@ -11,10 +11,10 @@ import androidx.viewbinding.ViewBinding
 abstract class BaseFragment<VB:ViewBinding>:Fragment() {
     abstract val LOG_TAG: String
     abstract  val bindingInflater: (LayoutInflater) -> VB
-    var _binding: ViewBinding? = null
-    var binding: VB?
+    private var _binding: ViewBinding? = null
+    val binding: VB?
         get() = _binding as VB?
-        set(value) = TODO()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/hp/AndroidStudioProjects/senddatabetweenfragmentusingrxjava/app/src/main/res/layout/activity_main.xml" value="0.16979166666666667" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/senddatabetweenfragmentusingrxjava/app/src/main/res/layout/fragment_receive.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/senddatabetweenfragmentusingrxjava/app/src/main/res/layout/fragment_send.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/senddatabetweenfragmentusingrxjava/app/src/main/res/drawable/ic_baseline_arrow_downward_24.xml" value="0.19322916666666667" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/senddatabetweenfragmentusingrxjava/app/src/main/res/drawable/shape.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/senddatabetweenfragmentusingrxjava/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/senddatabetweenfragmentusingrxjava/app/src/main/res/layout/fragment_receive.xml" value="0.1" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/senddatabetweenfragmentusingrxjava/app/src/main/res/layout/fragment_send.xml" value="0.1" />
       </map>
     </option>
   </component>

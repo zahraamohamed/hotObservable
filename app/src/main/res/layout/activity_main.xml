@@ -10,6 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="300dp"
     android:id="@+id/send_fragment"
+    android:layout_margin="16dp"
     android:name="com.example.senddatabetweenfragmentusingrxjava.SendFragment"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -17,17 +18,17 @@
 
     />
 
+
     <fragment
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
         android:id="@+id/receive_fragment"
         android:name="com.example.senddatabetweenfragmentusingrxjava.ReceiveFragment"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/send_fragment"
-        />
-
+        app:layout_constraintTop_toBottomOf="@+id/send_fragment" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
